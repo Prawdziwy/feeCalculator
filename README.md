@@ -2,7 +2,9 @@
 
 Small application based on Laravel.
 
-## How to install
+## How to install on Linux
 
-composer install
-php artisan serve
+    $ git clone https://github.com/Prawdziwy/feeCalculator feeCalculator
+    $ cd feeCalculator # Then you should setup your .env files
+    $ composer install
+    $ php artisan serve
