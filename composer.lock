@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ccbd816a07b206f971042295b899d1ba",
+    "content-hash": "5445da7cd1a16e33f19f092de051dec7",
     "packages": [
         {
             "name": "brick/math",
@@ -2178,6 +2178,30 @@
                 }
             ],
             "time": "2022-07-30T15:51:26+00:00"
+        },
+        {
+            "name": "pragmagotech/interview",
+            "version": "dev-junior",
+            "dist": {
+                "type": "path",
+                "url": "./vendor/recuitment-task",
+                "reference": "9b14e9cf3afbd1060c81b80cb4ae99adde94aa6d"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "PragmaGoTech\\Interview\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Piotr Ścibor",
+                    "email": "piotr.scibor@pragmago.tech"
+                }
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "psr/container",
@@ -7804,7 +7828,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "pragmagotech/interview": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
