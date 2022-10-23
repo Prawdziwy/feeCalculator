@@ -23,6 +23,42 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+
+        <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            $("#loanAmount").bind("change paste keyup", function() {
+                refreshFeeValue();
+            });
+            
+            $("form").submit(function(event) {
+              refreshFeeValue();
+              event.preventDefault();
+            });
+        });
+
+        function refreshFeeValue() {
+            var formData = {
+                amount: $("input#loanAmount").val()
+            };
+
+            $.ajax({
+                type: "GET",
+                url: "{{ route('calculate'); }}",
+                data: formData,
+                dataType: "json",
+                encode: true,
+            }).done(function (data) {
+                $("input#loanAmount").removeClass("is-invalid");
+                $("input#loanFee").val(data.fee);
+            }).fail(function (jsonData) {
+                const data = JSON.parse(jsonData.responseText);
+
+                $("input#loanAmount").addClass("is-invalid");
+                $(".invalid-feedback").html(data.message);
+                $("input#loanFee").val("");
+            });
+        }
+        </script>
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
