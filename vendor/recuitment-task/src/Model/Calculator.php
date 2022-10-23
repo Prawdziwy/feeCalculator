@@ -12,7 +12,7 @@ use PragmaGoTech\Interview\FeeCalculator;
 class Calculator implements FeeCalculator
 {
     // Array of values
-    private $amounts = array(
+    private $amountTooFee = array(
         1000 => 50,
         2000 => 90,
         3000 => 90,
@@ -46,9 +46,13 @@ class Calculator implements FeeCalculator
         $smallerValue = min($closestAmount, $secondClosestAmount);
         $biggerValue = max($closestAmount, $secondClosestAmount);
 
+        // Get Fee from Amount of Loan
+        $biggerFee = $this->amountTooFee[$biggerValue];
+        $smallerFee = $this->amountTooFee[$smallerValue] ?? $biggerFee;
+
         // Calculate the Interpolated Value
         $valueRange = ($application->amount() - $smallerValue) / ($biggerValue - $smallerValue);
-        $interpolatedValue = $this->amounts[$smallerValue] * (1 - $valueRange) + $this->amounts[$biggerValue] * $valueRange;
+        $interpolatedValue = $smallerFee * (1 - $valueRange) + $biggerFee * $valueRange;
 
         // Return calculated value
         return round($interpolatedValue);
